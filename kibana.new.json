@@ -1,0 +1,8 @@
+{
+  "id": "kbnBstEtn",
+  "version": "kibana",
+  "server": false,
+  "ui": true,
+  "requiredPlugins": ["navigation"],
+  "optionalPlugins": []
+}
