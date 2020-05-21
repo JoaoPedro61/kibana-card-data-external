@@ -22,6 +22,26 @@ export const visFn = (): ExpressionFunction<
       default: true,
       help: 'Shows labels under the metric values.',
     },
+    prefix: {
+      types: ['string'],
+      default: `""`,
+      help: 'Prefix of the metric value',
+    },
+    sufix: {
+      types: ['string'],
+      default: `""`,
+      help: 'Sufix of the metric value',
+    },
+    allowInheritPropsByRequestResponse: {
+      types: ['boolean'],
+      default: false,
+      help: 'Inherit some properties from the request response',
+    },
+    allowReplacePropsByRequestResponse: {
+      types: ['boolean'],
+      default: false,
+      help: 'Replace some properties from the request response',
+    },
     font: {
       types: ['style'],
       help: 'Font settings.',
@@ -42,7 +62,7 @@ export const visFn = (): ExpressionFunction<
     uriTarget: {
       types: ['string'],
       aliases: ['target', 'uri'],
-      default: '""',
+      default: '"https://jsonplaceholder.cypress.io/todos/1"',
       help: 'URI Target.',
     },
   },

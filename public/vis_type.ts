@@ -14,11 +14,15 @@ export const visTypeDefinition = (_deps?: any) => {
     visConfig: {
       component: VisComponent,
       defaults: {
-        uriTarget: ``,
+        uriTarget: `https://jsonplaceholder.cypress.io/todos/1`,
         type: `metric`,
         label: `Change Me`,
         subText: `This is my simple help text.`,
         labels: true,
+        prefix: ``,
+        sufix: ``,
+        allowReplacePropsByRequestResponse: false,
+        allowInheritPropsByRequestResponse: false,
         style: {
           fontSize: 60,
         }

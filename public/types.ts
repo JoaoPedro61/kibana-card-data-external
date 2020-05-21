@@ -24,8 +24,12 @@ export interface Arguments {
   type: string;
   uriTarget: string;
   label: string;
-  subText: string;
   labels: boolean;
+  subText: string;
+  prefix: string;
+  sufix: string;
+  allowReplacePropsByRequestResponse: boolean;
+  allowInheritPropsByRequestResponse: boolean;
   fontSize: number;
   font: Style;
 }
@@ -33,7 +37,12 @@ export interface Arguments {
 export interface VisParams {
   type: Arguments['type'];
   label: Arguments['label'];
+  uriTarget: Arguments['uriTarget'];
   subText: Arguments['subText'];
+  prefix: Arguments['prefix'];
+  sufix: Arguments['sufix'];
+  allowInheritPropsByRequestResponse: Arguments['allowInheritPropsByRequestResponse'];
+  allowReplacePropsByRequestResponse: Arguments['allowReplacePropsByRequestResponse'];
   labels: Arguments['labels'];
   style: {
     fontSize: Arguments['fontSize'];
