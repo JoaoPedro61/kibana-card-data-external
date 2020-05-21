@@ -10,13 +10,15 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 
-import { equals, isValid, get as letItGo, requestErrors } from './../../../common';
+import { equals, isValid, get as letItGo, requestErrors, addQueryParams } from './../../../common';
 import { take } from 'rxjs/operators';
 
 
 
 
-export function Component({ visParams }) {
+export function Component({ visParams, visData }) {
+
+  const [shouldIgnoreFirst, set_shouldIgnoreFirst] = useState(true);
 
   const [isLoading, set_isLoading]  = useState(isValid(visParams.uriTarget));
 
@@ -50,6 +52,22 @@ export function Component({ visParams }) {
     fontSize: `${(style.fontSize || 60)}pt`
   });
 
+  useEffect(() => {
+    let didCancel = false;
+
+    if (!didCancel) {
+      if (!shouldIgnoreFirst) {
+        set_validURI(isValid(visParams.uriTarget));
+        set_uriTarget(visParams.uriTarget);
+        _fetchMetadata();
+      }
+    }
+
+    return () => {
+      didCancel = true;
+    }
+  }, [visData]);
+
   function _fetchMetadata(): void {
     if (!validURI) {
       if (isLoading) {
@@ -66,7 +84,8 @@ export function Component({ visParams }) {
         prefix: [prefix, set_prefix, `string`],
         sufix: [sufix, set_sufix, `string`],
       };
-      letItGo(uriTarget)
+      const uri = addQueryParams(uriTarget, visData, [`type`, `timeRange`, `query`, `filters`]);
+      letItGo(uri)
         .pipe(take(1))
         .subscribe((response) => {
           if (!response.hasOwnProperty(`data`)) {
@@ -174,6 +193,7 @@ export function Component({ visParams }) {
     if (validURI) {
       _fetchMetadata();
     }
+    set_shouldIgnoreFirst(false);
   }, []);
 
   let prefixFragment = (<></>);
