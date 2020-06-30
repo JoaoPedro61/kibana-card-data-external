@@ -10,7 +10,7 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 
-import { equals, isValid, get as letItGo, requestErrors, addQueryParams } from './../../../common';
+import { equals, isValid, get as letItGo, requestErrors, addQueryParams } from './../../../common/index';
 import { take } from 'rxjs/operators';
 
 

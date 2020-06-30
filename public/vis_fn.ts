@@ -1,7 +1,7 @@
 import { ExpressionFunction } from './../../../src/plugins/interpreter/public';
 import { Context, Arguments, Return } from './types';
 
-import { PLUGIN_NAME_VIS_FN } from './../common';
+import { PLUGIN_NAME_VIS_FN } from './../common/index';
 
 
 export const visFn = (): ExpressionFunction<

@@ -3,7 +3,7 @@ import { Legacy } from './../../kibana';
 
 import { LegacyPluginApi, LegacyPluginInitializer } from '../../src/legacy/types';
 
-import { PLUGIN_ID, PLUGIN_NAME } from './common';
+import { PLUGIN_ID, PLUGIN_NAME } from './common/index';
 
 
 

@@ -23,7 +23,7 @@ import {
 } from '@elastic/eui';
 import { take } from 'rxjs/operators';
 
-import { get as letItGo, requestErrors, ALLOWED_INPUT } from './../../../common';
+import { get as letItGo, requestErrors, ALLOWED_INPUT } from './../../../common/index';
 
 
 

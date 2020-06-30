@@ -1,4 +1,4 @@
-import { PLUGIN_NAME, PLUGIN_ID } from './../common';
+import { PLUGIN_NAME, PLUGIN_ID } from './../common/index';
 
 import { OptionsComponent, VisComponent } from './components';
 
