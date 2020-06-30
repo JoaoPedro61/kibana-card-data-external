@@ -1,6 +1,6 @@
-export const PLUGIN_ID = `kbnBstEtn`;
-export const PLUGIN_NAME = `kbn_bst_etn`;
-export const PLUGIN_NAME_VIS_FN = `kbnBstEtnVis`;
+export const PLUGIN_ID = `kbn-bst-etn`;
+export const PLUGIN_NAME = `kbn-bst-etn`;
+export const PLUGIN_NAME_VIS_FN = `kbn-bst-etn-vis`;
 
 export const ALLOWED_INPUT = {
   data: {

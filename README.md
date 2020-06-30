@@ -1,4 +1,4 @@
-# kbn_bst_etn
+# kbn-bst-etn
 
 > An awesome Kibana plugin
 
