@@ -19,6 +19,9 @@ import {
   isAColor,
   tryToInt
 } from './../../../../common';
+
+import { getDataService } from './../../../services';
+
 import { take } from 'rxjs/operators';
 
 
@@ -123,7 +126,12 @@ export function Component({ visParams, visData }) {
         valueColor: [style.valueColor, fnAssertStyles('valueColor'), `string`],
         descriptorsColor: [style.descriptorsColor, fnAssertStyles('descriptorsColor'), `string`],
       };
-      const uri = addQueryParams(uriTarget, visData, []);
+
+      const superData = getDataService();
+      const uri = addQueryParams(visParams.uriTarget, {
+        ...visData,
+        timeRange: superData.query.timefilter.timefilter.getTime(),
+        filters: JSON.parse(JSON.stringify([...(superData.query.filterManager.getFilters() || [])])) }, [ ]);
       letItGo(uri)
         .pipe(take(1))
         .subscribe((response) => {

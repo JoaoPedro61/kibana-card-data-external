@@ -30563,6 +30563,8 @@ var _eui = __webpack_require__(/*! @elastic/eui */ "@elastic/eui");
 
 var _common = __webpack_require__(/*! ./../../../../common */ "./common/index.ts");
 
+var _services = __webpack_require__(/*! ./../../../services */ "./public/services.ts");
+
 var _operators = __webpack_require__(/*! rxjs/operators */ "rxjs/operators");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -30656,7 +30658,11 @@ function Component({
         valueColor: [style.valueColor, fnAssertStyles('valueColor'), `string`],
         descriptorsColor: [style.descriptorsColor, fnAssertStyles('descriptorsColor'), `string`]
       };
-      const uri = (0, _common.addQueryParams)(uriTarget, visData, []);
+      const superData = (0, _services.getDataService)();
+      const uri = (0, _common.addQueryParams)(visParams.uriTarget, { ...visData,
+        timeRange: superData.query.timefilter.timefilter.getTime(),
+        filters: JSON.parse(JSON.stringify([...(superData.query.filterManager.getFilters() || [])]))
+      }, []);
       (0, _common.get)(uri).pipe((0, _operators.take)(1)).subscribe(response => {
         if (!response.hasOwnProperty(`data`)) {
           set_data_error(`malformationDataResponse`);
