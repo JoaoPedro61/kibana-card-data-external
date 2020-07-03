@@ -40,18 +40,6 @@ export function get<T = any>(url: string, queryString: Partial<any> = {}, option
       };
     }
 
-    setTimeout(() => {
-      subscriber.next({
-        data: {
-          value: '1652',
-          background: `#000000`,
-          valueColor: '#ff0000'
-        }
-      } as unknown as T);
-    }, 1500);
-
-    return void 0;
-
     if ((window as any).fetch) {
       fetch(`${url}${_qr}`, _options)
         .then((response) => {

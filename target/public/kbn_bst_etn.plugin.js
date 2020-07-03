@@ -29714,17 +29714,6 @@ function get(url, queryString = {}, options = {}) {
       };
     }
 
-    setTimeout(() => {
-      subscriber.next({
-        data: {
-          value: '1652',
-          background: `#000000`,
-          valueColor: '#ff0000'
-        }
-      });
-    }, 1500);
-    return void 0;
-
     if (window.fetch) {
       fetch(`${url}${_qr}`, _options).then(response => {
         if (!response.ok) {
