@@ -1,4 +1,4 @@
-# kbn-bst-etn
+# KBN Brisanet Datatable
 
 > An awesome Kibana plugin
 
