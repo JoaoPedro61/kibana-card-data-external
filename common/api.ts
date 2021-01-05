@@ -62,4 +62,3 @@ export function get<T = any>(url: string, queryString: Partial<any> = {}, option
     }
   });
 }
-

@@ -1,59 +1,34 @@
-import { Plugin as ExpressionsPublicPlugin } from './../../../src/plugins/expressions/public';
-import { Plugin as DataPublicPlugin } from '../../../src/plugins/data/public';
-import { VisualizationsSetup } from 'plugins/visualizations';
-import { KibanaDatatable, Render, Style } from './../../../src/plugins/interpreter/public';
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 
+import { ExpressionsStart } from '../../../src/plugins/expressions/public';
+import { VisualizationsSetup } from '../../../src/plugins/visualizations/public';
+import { DataPublicPluginStart } from '../../../src/plugins/data/public';
 
-
+export interface kbnBstEtnPluginSetup {
+  getGreeting: () => string;
+}
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KbnBstEtnPluginSetupDependencies {
-  data: ReturnType<DataPublicPlugin['setup']>;
+export interface kbnBstEtnPluginStart {}
+
+export interface AppPluginStartDependencies {
+  expressions: ExpressionsStart;
+  data: DataPublicPluginStart;
   visualizations: VisualizationsSetup;
-  expressions: ReturnType<ExpressionsPublicPlugin['setup']>;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KbnBstEtnPluginSetup { }
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface KbnBstEtnPluginStart {}
-
-export type Context = KibanaDatatable;
-
-export interface Arguments {
-  type: string;
-  uriTarget: string;
-  label: string;
-  labels: boolean;
-  subText: string;
-  prefix: string;
-  sufix: string;
-  allowReplacePropsByRequestResponse: boolean;
-  allowInheritPropsByRequestResponse: boolean;
-  fontSize: number;
-  font: Style;
-}
-
-export interface VisParams {
-  type: Arguments['type'];
-  label: Arguments['label'];
-  uriTarget: Arguments['uriTarget'];
-  subText: Arguments['subText'];
-  prefix: Arguments['prefix'];
-  sufix: Arguments['sufix'];
-  allowInheritPropsByRequestResponse: Arguments['allowInheritPropsByRequestResponse'];
-  allowReplacePropsByRequestResponse: Arguments['allowReplacePropsByRequestResponse'];
-  labels: Arguments['labels'];
-  style: {
-    fontSize: Arguments['fontSize'];
-  };
-}
-
-export interface RenderValue {
-  visType: 'metric';
-  visData: Context;
-  visConfig: VisParams;
-  params: any;
-}
-
-export type Return = Render<RenderValue>;
